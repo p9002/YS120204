@@ -5,7 +5,7 @@ package alan.no1.ys120204.data;
  */
 
 public class Student {
-    int ID;
+    public int ID;
     String name;
     String tel;
     String addr;
