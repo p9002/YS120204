@@ -2,6 +2,7 @@ package alan.no1.ys120204;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import alan.no1.ys120204.data.Student;
@@ -24,5 +25,15 @@ public class DetailActivity extends AppCompatActivity {
         tv2.setText(s.name);
         tv3.setText(s.tel);
         tv4.setText(s.addr);
+    }
+
+    public void clickBack(View v)
+    {
+        finish();
+    }
+    public void clickDelete(View v)
+    {
+        app.dao.delete(Integer.valueOf(tv1.getText().toString()));
+        finish();
     }
 }

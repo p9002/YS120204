@@ -61,6 +61,25 @@ public class StudentDAOFileImpl implements StudentDAO {
         return null;
     }
 
+    @Override
+    public void delete(int ID) {
+        int loc = -1;
+        for (int i=0;i<data.size();i++)
+        {
+            if (data.get(i).ID == ID)
+            {
+                loc = i;
+                break;
+            }
+        }
+        if (loc != -1)
+        {
+            data.remove(loc);
+        }
+        Gson gson = new Gson();
+        writeFile(gson.toJson(data, new TypeToken<ArrayList<Student>>(){}.getType()));
+    }
+
     public String readData()
     {
         char[] buffer = new char[1];
