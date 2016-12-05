@@ -1,5 +1,7 @@
 package alan.no1.ys120204.data;
 
+import android.support.annotation.ArrayRes;
+
 import java.util.ArrayList;
 import java.util.List;
 
