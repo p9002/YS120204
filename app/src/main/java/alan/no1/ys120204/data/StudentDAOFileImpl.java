@@ -28,14 +28,18 @@ public class StudentDAOFileImpl implements StudentDAO {
     public StudentDAOFileImpl(Context context)
     {
         this.context = context;
-        data = new ArrayList<>();
+        data = getList();
     }
     @Override
-    public List<Student> getList() {
+    public ArrayList<Student> getList() {
         Gson gson = new Gson();
         String filedata = readData();
 
         data = gson.fromJson(filedata, new TypeToken<List<Student>>(){}.getType());
+        if (data == null)
+        {
+            data = new ArrayList<>();
+        }
         return data;
     }
 
