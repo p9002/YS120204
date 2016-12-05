@@ -1,6 +1,8 @@
 package alan.no1.ys120204;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -33,7 +35,23 @@ public class DetailActivity extends AppCompatActivity {
     }
     public void clickDelete(View v)
     {
-        app.dao.delete(Integer.valueOf(tv1.getText().toString()));
-        finish();
+        AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
+        builder.setTitle("確認刪除");
+        builder.setMessage("請問是否要刪除本筆資料");
+        builder.setPositiveButton("刪除", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                app.dao.delete(Integer.valueOf(tv1.getText().toString()));
+                finish();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
+
     }
 }
